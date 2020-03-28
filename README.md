@@ -6,6 +6,7 @@ If you ever tried using [nanosleep](https://linux.die.net/man/2/clock_nanosleep)
 For example (I am using my PC timings as an example only. Results will vary ofc on your hw):
 
 A nanosleep with FLAGS = 0 will add extra ~60000 nanoseconds.
+
 A nanosleep with FLAGS = TIMER_ABSTIME will add only ~3000 nanoseconds.
 
 Thus, if you need to sleep nanoseconds without much overhead and don't feel like calculating your F_CPU mhz and clock cycles, this procedure is for you: nanodelay().
@@ -28,17 +29,23 @@ I'm adding a small program which compares the different nanosleep methods. Here 
 
 ## with nanosleep():
 delay 1 naonseconds took 60686 nanoseconds (real 0)
+
 delay 1 naonseconds took 60886 nanoseconds (real 0)
+
 delay 1 naonseconds took 60882 nanoseconds (real 0)
 
 ## with naonsleep(TIMER_ABSTIME):
 delay 1 naonseconds took 3705 nanoseconds (real 0)
+
 delay 1 naonseconds took 3620 nanoseconds (real 0)
+
 delay 1 naonseconds took 3636 nanoseconds (real 0)
 
 ## with nanodelay():
 delay 1 naonseconds took 58 nanoseconds (real 18)
+
 delay 1 naonseconds took 58 nanoseconds (real 19)
+
 delay 1 naonseconds took 58 nanoseconds (real 18)
 
 
